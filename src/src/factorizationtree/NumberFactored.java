@@ -30,7 +30,7 @@ public class NumberFactored {
 		}
 		this.val = v;
 		this.useThreshold = useThreshold;
-		this.evaluateAndSetDivisors();
+		this.initiateThresholdAndDivisors();
 	}
 
 	public NumberFactored(final NumberFactored in) {
@@ -39,9 +39,9 @@ public class NumberFactored {
 
 	// methods.
 
-	public void evaluateAndSetDivisors() {
+	public void initiateThresholdAndDivisors() {
 		if (val <= 0) {
-			return;
+			throw new IllegalArgumentException();
 		}
 
 		divisors.add(this);
