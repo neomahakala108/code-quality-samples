@@ -55,16 +55,19 @@ class JunitTestCase {
 		n = new NumberFactored(108);
 		assertEquals(n.getDivisorsAmount(), 6);
 		
+		assertFalse(n.isPrimeNumber());
+		
 		n = new NumberFactored(108, true);
 		assertEquals(n.getDivisorsAmount(), 6);
 		
 		n = new NumberFactored(108, false);
 		assertEquals(n.getDivisorsAmount(), 12);
 		assertEquals("[ 108, 54, 36, 27, 18, 12, 9, 6, 4, 3, 2, 1 ];\n", 
-				n.getLocalDivisorsAsStringBuilder(false).toString());
+				n.getClonedLocalDivisorsAsStringBuilder(false).toString());
 		
 		n = new NumberFactored(108, false);
 		assertEquals(n.getDivisorsAmount(), 12);
+		
 		
 		
 		// ... TODO: more tests
@@ -83,6 +86,17 @@ class JunitTestCase {
 		
 		// ... TODO: more tests
 
+	}
+	
+	@Test
+	void testMaxLongValue() {
+		n = new NumberFactored(Long.MAX_VALUE);
+		
+		assertFalse(n.isPrimeNumber());
+		assertEquals(n.getDivisorsAmount(), 48);
+//		System.out.print(n.getDivisorsStateAsStringBuilder(true).toString());
+		
+		// ... TODO: more tests
 	}
 
 	
