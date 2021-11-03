@@ -1,13 +1,13 @@
 package factorizationtree;
 
-public class FT {
+public class FactorizationTreeEntryPoint {
 
 	// entry point.
 	
 	public static void main(String[] args) {
 		boolean useThreshold = true;
 		boolean cutBounds = true;
-		long num = 17;
+		// long num = 17;
 
 		NumberFactored n = new NumberFactored(108, useThreshold);
 		// NumberFactored n = new NumberFactored(3*7*11, false);
