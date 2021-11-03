@@ -1,21 +1,15 @@
 package ft;
 
 public class FT {
-// --
-// there can be also: 'empty methods', 'event(s)-related methods', perhaps more.
-// --
 
-// entry point.
-
-// commented lines with NumberFactored object construction are only examples,
-// 'constructor call' can be edited, etc.
-
+	// entry point.
+	
 	public static void main(String[] args) {
-		boolean useThreshold = false;
-		boolean cutBounds = false;
+		boolean useThreshold = true;
+		boolean cutBounds = true;
 		long num = 17;
 
-		NumberFactored n = new NumberFactored(108);
+		NumberFactored n = new NumberFactored(108, useThreshold);
 		// NumberFactored n = new NumberFactored(3*7*11, false);
 		// NumberFactored n1 = new NumberFactored(num, useThreshold);
 		// NumberFactored n = new NumberFactored(n1);
@@ -26,24 +20,30 @@ public class FT {
 		// printDebugInfo();
 	}
 
-// utility method for entry point.
-
+	// utility method for debugging.
+	
 	public static void printDebugInfo() {
 		NumberFactored n;
+		StringBuilder sb = new StringBuilder();
 
 		for (long i = 1; i <= 15; i++) {
-			System.out.println(i + ":\n");
+			sb.append(i);
+			sb.append(":\n");
 			n = new NumberFactored(i, true);
-			System.out.println(n.getGeneralStateAsStringBuilder(true));
-			System.out.println(i + ":\n");
-			System.out.println(n.getGeneralStateAsStringBuilder(false));
+			sb.append(n.getGeneralStateAsStringBuilder(true));
+			sb.append(i);
+			sb.append(":\n");
+			sb.append(n.getGeneralStateAsStringBuilder(false));
 
+			sb.append(i);
+			sb.append(":\n");
 			n = new NumberFactored(i, false);
-			System.out.println(i + ":\n");
-			System.out.println(n.getGeneralStateAsStringBuilder(true));
-			System.out.println(i + ":\n");
-			System.out.println(n.getGeneralStateAsStringBuilder(false));
-
+			sb.append(n.getGeneralStateAsStringBuilder(true));
+			sb.append(i);
+			sb.append(":\n");
+			sb.append(n.getGeneralStateAsStringBuilder(false));
 		}
+		
+		System.out.println(sb.toString());
 	}
 }
