@@ -20,17 +20,33 @@ public class NumberFactored {
 
 	// constructor methods.
 
+	/**
+	 * @author Andrzej Wysocki.
+	 * 
+	 * @param v number to factor.
+	 */
 	public NumberFactored(final long v) {
 		this(v, true);
 	}
 
+	/**
+	 * @author Andrzej Wysocki.
+	 * 
+	 * @param v number to factor.
+	 * 
+	 * @param useThreshold to find factorization of number v, we do not need to check
+	 *		divisors below a value of: Math.floor(Math.sqrt(val)). In these cases we stop
+	 *		looking for more divisors once the threshold value is reached.
+	 * 
+	 * @throws IllegalArgumentException thrown when number to factor is less than 1.
+	 */
 	public NumberFactored(final long v, final boolean useThreshold) {
 		if (v <= 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("number to factor must be greater than 0");
 		}
 		this.val = v;
 		this.useThreshold = useThreshold;
-		this.initiateThresholdAndDivisors();
+		this.initiateDivisors();
 	}
 
 	public NumberFactored(final NumberFactored in) {
@@ -39,7 +55,7 @@ public class NumberFactored {
 
 	// methods.
 
-	public void initiateThresholdAndDivisors() {
+	public void initiateDivisors() {
 		if (val <= 0) {
 			throw new IllegalArgumentException();
 		}
