@@ -1,4 +1,4 @@
-package ft;
+package factorizationtree;
 
 import java.util.LinkedList;
 import java.util.List;

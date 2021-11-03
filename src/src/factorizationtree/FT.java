@@ -1,4 +1,4 @@
-package factorization-tree;
+package factorizationtree;
 
 public class FT {
 
