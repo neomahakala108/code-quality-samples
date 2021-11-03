@@ -123,13 +123,16 @@ public class NumberFactored {
 	}
 
 	public StringBuilder getClonedLocalDivisorsAsStringBuilder(final boolean cutBounds) {
-		final int amountOfDivisors = divisors.size();
-
+		final List<NumberFactored> localClonedDivisorsList =
+				getClonedLocalDivisorsAsList(cutBounds);
+	
+		final int amountOfDivisors = localClonedDivisorsList.size();
+		
 		final StringBuilder result = new StringBuilder();
 		result.append("[");
 		for (int i = 0; i < amountOfDivisors; i++) {
 			result.append(" ");
-			result.append(divisors.get(i).getVal());
+			result.append(localClonedDivisorsList.get(i).getVal());
 			if (i < amountOfDivisors - 1) {
 				result.append(",");
 			}
@@ -137,15 +140,13 @@ public class NumberFactored {
 		result.append(" ];\n");
 
 		return result;
-//		return getDivisorsAsStringBuilder(getClonedLocalDivisorsAsList(cutBounds));
 	}
 
 	public StringBuilder getDivisorsStateAsStringBuilder(final boolean cutBounds) {
 		final StringBuilder result = new StringBuilder();
 
-		final List<NumberFactored> localDivisors = getClonedLocalDivisorsAsList(cutBounds);
 		result.append("  Divisors amount: ");
-		result.append(divisors.size());
+		result.append(getClonedLocalDivisorsAsList(cutBounds).size());
 		result.append(";\n");
 
 		result.append("  Divisors List: ");
