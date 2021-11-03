@@ -126,7 +126,7 @@ public class NumberFactored {
 		return val;
 	}
 
-	public List<NumberFactored> getDivisorsClone(final boolean cutBounds) {
+	private List<NumberFactored> getDivisorsClone(final boolean cutBounds) {
 		final int amount = this.getDivisorsAmount();
 		final List<NumberFactored> result = new LinkedList<NumberFactored>();
 		for (int i = 0; i < amount; i++) {
@@ -152,12 +152,26 @@ public class NumberFactored {
 		result.append(getDivisorsStateAsStringBuilder(cutBounds));
 		return result;
 	}
+	
+	public List<NumberFactored> getLocalDivisorsAsList(final boolean cutBounds) {
+		return getDivisorsClone(cutBounds);		
+	}
+	
+	
+	public StringBuilder getLocalDivisorsAsStringBuilder(final boolean cutBounds) {
+		return getDivisorsAsStringBuilder(getLocalDivisorsAsList(cutBounds));
+	}
 
 	public StringBuilder getDivisorsStateAsStringBuilder(final boolean cutBounds) {
 		final StringBuilder result = new StringBuilder();
-		final List<NumberFactored> localDivisors = getDivisorsClone(cutBounds);
-		result.append("  Divisors amount: " + getDivisorsAmount(localDivisors) + ";\n");
-		result.append("  Divisors List: " + getDivisorsAsStringBuilder(localDivisors));
+		
+		final List<NumberFactored> localDivisors = getLocalDivisorsAsList(cutBounds);
+		result.append("  Divisors amount: ");
+		result.append(getDivisorsAmount(localDivisors));
+		result.append(";\n");
+
+		result.append("  Divisors List: ");
+		result.append(getLocalDivisorsAsStringBuilder(cutBounds));
 		
 		return result;
 	}
@@ -177,5 +191,11 @@ public class NumberFactored {
 		}
 		
 		return result;
+	}
+	
+	public String toString() {
+		StringBuilder result = new StringBuilder();
+		result.append(val);
+		return result.toString();
 	}
 }
